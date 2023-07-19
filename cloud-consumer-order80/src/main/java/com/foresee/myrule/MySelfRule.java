@@ -1,4 +1,4 @@
-package com.foresee.springcloud.myrule;
+package com.foresee.myrule;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
