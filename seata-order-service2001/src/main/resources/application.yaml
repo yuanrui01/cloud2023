@@ -5,18 +5,15 @@ spring:
   application:
     name: seata-order-service
   cloud:
-    alibaba:
-      seata:
-        #自定义事务组名称需要与seata-server中的对应
-        tx-service-group: seata-server
     nacos:
       discovery:
         server-addr: localhost:8848
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seata_order
     username: root
     password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
 
 feign:
   hystrix:
@@ -29,3 +26,19 @@ logging:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+
+seata:
+  enabled: true
+  application-id: seata-order
+  tx-service-group: seata-test
+  service:
+    vgroup-mapping:
+      seata-test: default
+      seata-order-service-fescar-service-group: default
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: public
+      group: SEATA_GROUP
+      application: seata-server

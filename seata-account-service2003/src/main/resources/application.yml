@@ -5,17 +5,15 @@ spring:
   application:
     name: seata-account-service
   cloud:
-    alibaba:
-      seata:
-        tx-service-group: fsp_tx_group
     nacos:
       discovery:
         server-addr: localhost:8848
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seata_account
     username: root
     password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
 
 feign:
   hystrix:
@@ -28,5 +26,21 @@ logging:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+
+seata:
+  enabled: true
+  application-id: seata-account
+  tx-service-group: seata-test
+  service:
+    vgroup-mapping:
+      seata-test: default
+      seata-account-service-fescar-service-group: default
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: public
+      group: SEATA_GROUP
+      application: seata-server
 
 

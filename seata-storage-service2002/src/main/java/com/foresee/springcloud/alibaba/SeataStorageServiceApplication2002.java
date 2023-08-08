@@ -15,7 +15,7 @@ import java.util.concurrent.ForkJoinWorkerThread;
  * @auther zzyy
  * @create 2019-12-12 17:31
  */
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
 public class SeataStorageServiceApplication2002
