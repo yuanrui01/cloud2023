@@ -6,6 +6,7 @@ import com.foresee.springcloud.service.PaymentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @auther zzyy
@@ -24,6 +25,7 @@ public class PaymentServiceImpl implements PaymentService
 
     public Payment getPaymentById(Long id)
     {
+        try { TimeUnit.MILLISECONDS.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
         return paymentDao.getPaymentById(id);
     }
 }

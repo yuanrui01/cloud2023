@@ -17,3 +17,11 @@ logging:
   level:
     # feign日志以什么级别监控哪个接口
     com.foresee.springcloud.service.PaymentFeignService: debug
+
+feign:
+  client:
+    config:
+      default:
+        read-timeout: 3000
+        connect-timeout: 3000
+
